@@ -111,3 +111,58 @@ Para el caso concreto TechHub Coworking lo ideal es un enfoque híbrido:
 | Topologías básicas: Diseño de red en estrella y esquemas de conexión entre sucursales | Uso de simuladores avanzados (GNS3: Cómo montar el entorno virtual para testear la red antes de comprar el hardware | Documentación oficial de GNS3, foros de la comunidad y videotutoriales paso a paso |
 | Fundamentos de Servidores: Diferencia entre hardware físico y servicios en la nube. | Virtualización de máquinas (VM Ware Fusion): Cómo virtualizar el router (MikroTik CHR) | Instructivos técnicos de virtualización y videos sobre configuración de máquinas virtuales en ARM64/x86 |
 
+### FASE 3: Investigación dirigida
+#### WiFi: estándares actuales
+| Estándar | Nombre | Banda | Ancho max | Veloc. max | MIMO | Clave |
+| ----- | ----- | ----- | ------- | -------- | ----- | -------- |
+| **802.11n / WiFi 4** | WiFi 4 | 2.4/ 5 GHz | 40MHz | -600 Mbps | Si | Primer MIMO, mejora velocidad |
+| **802.11ac** | WiFi 5 | 5 GHz | 160 MHz | ~3.5 Gbps | MU-MIMO | Mejor rendimiento en 5 GHz |
+| **802.11ax** | WiFi 6 | 2.4 / 5 GHz | 160 MHz | ~9.6 Gbps | OFDMA + MU-MIMO | Mejor con muchos dispositivos |
+| **802.11ax** | WiFi 6E | 2.4 / 5 / 6 GHz | 160 MHz | ~9.6 Gbps | OFDMA | Nueva banda 6 GHz |
+| **802.11be** | WiFi 7 | 2.4 / 5 / 6 GHz | 320 MHz | ~46 Gbps | Multi-link | Ultra velocidad y baja latencia |
+
+**Para el coworking de TechHub con 200 personas en 3 pisos: qué generación de WiFi  recomiendan y por qué? Investiguen las diferencias principales entre WiFi 6 y WiFi 7 desde  el punto de vista práctico: cuántos dispositivos soportan, qué bandas usan, cuánto cuestan  los APs. No necesitan entender la modulación interna; necesitan saber elegir.**
+
+Tenemos 200 personas distribuidas en 3 niveles. Esto no es solo una cuestión de "señal", sino de capacidad de gestión de usuarios simultáneos.
+| Característica | WiFi 6/6E | WiFi 7 |
+| :--- | :--- | :--- |
+| **Bandas de frecuencia** | 2.4 GHz y 5 GHz (6E suma la de 6 GHz) | Usa las tres simultáneamente |
+| **Tecnología clave** | Los dispositivos eligen una banda | MLO (Multi-Link Operation): usa todas a la vez |
+| **Ancho de canal** | Hasta 160 MHz | 320 MHz |
+| **Compatibilidad** | Estándar universal. Casi cualquier dispositivo lo tiene | Solo dispositivos de alta gama |
+| **Costo aprox. (pack x3)** | €160 (WiFi 6) - €320 (WiFi 6E) | €530+ (WiFi 7) |
+
+WiFi 7 es, técnicamente, muy potente. Al usar MLO, si una banda tiene interferencia, el tráfico sigue fluyendo por las otras sin cortes. Además, el canal de 320 MHz es como pasar de una avenida de 2 carriles a una de 4.
+Sin embargo, hay una trampa: el ecosistema. Para que WiFi 7 funcione al máximo, tanto el AP como el celular del cliente deben ser WiFi 7. En un coworking, la mayoría de los usuarios vendrán con laptops de hace 2 o 3 años que son WiFi 6. Un router WiFi 7 les dará estabilidad, pero no irán más rápido de lo que su propia placa de red les permita.
+
+La diferencia de precio es notable:
+* WiFi 6 (Deco X10): €160. Es una opción económica, pero quizás justa para 200 personas haciendo videollamadas.
+* WiFi 6E (Deco XE75): €320. Es el punto medio ideal, ya que abre la banda de 6 GHz (menos congestionada).
+* WiFi 7 (Deco BE65): €530. Es una inversión a futuro, pero hoy cuesta casi el triple que el modelo base.
+
+Para el caso concreto TechHub Coworking, lo ideal es el WiFi 6E.
+* Madurez: WiFi 6/6E es el estándar que el 90% de nuestros clientes ya tiene.
+* Banda de 6 GHz: Al elegir 6E, ya estamos desbloqueando la "vía rápida" de los 6 GHz, evitando las interferencias del 2.4 GHz de los microondas o el Bluetooth de la oficina.
+* Eficiencia de costos: Con lo que ahorramos al no ir por WiFi 7 (unos €210), podemos invertir en una mejor conexión de fibra simétrica o en más repetidores para asegurar que no haya "zonas muertas" entre los 3 pisos.
+
+Conclusión: WiFi 7 es el futuro, pero para la realidad actual de TechHub, WiFi 6E ofrece el mejor equilibrio entre capacidad de dispositivos y responsabilidad financiera.
+
+#### VPN modernas
+| Aspecto | WireGuard | OpenVPN | IPsec | Tailscale |
+| :--- | :--- | :--- | :--- | :--- |
+| **Velocidad** | MUY alta | Media | Alta | Alta |
+| **Seguridad** | Muy alta | Alta | Alta | Muy alta |
+| **Facilidad de config.** | Fácil | Difícil | Compleja | Muy fácil |
+| **NAT Traversal** | Sí | Sí | Limitado | Sí |
+| **Mejor uso** | VPN moderna | Compatibilidad | Empresas grandes | Zero trust fácil |
+
+**Investiguen qué es Zero Trust Network Access y cómo se diferencia del modelo de VPN  tradicional.**
+Las empresas solían usar el modelo de VPN: una vez que la lograbas cruzar, tenías acceso a todo el sistema. Hoy, con el Zero Trust Network Access (ZTNA), la filosofía cambia a "nunca confiar, siempre verificar".
+
+La VPN suele operar en la Capa 3 (Red) del modelo OSI.
+* Acceso amplio: Cuando un empleado se conecta por VPN a una sucursal, el sistema confía en él y le da visibilidad de toda la red local. Puede ver servidores, impresoras y otras computadoras.
+* El riesgo: Si las credenciales de un usuario son robadas, el atacante tiene "vía libre" para moverse lateralmente por toda nuestra infraestructura.
+
+ZTNA es la tecnología que aplica el concepto de Confianza Cero. A diferencia de la VPN, ZTNA opera normalmente en la Capa 7 (Aplicación).
+* Acceso granular: El usuario no se conecta "a la red", sino a una aplicación específica. Si un administrativo necesita entrar al sistema de gestión, solo ve eso; el resto de la red (servidores de cámaras, archivos de gerencia) es invisible para él.
+* Verificación constante: No basta con loguearse una vez. El sistema verifica el dispositivo, la ubicación y el comportamiento del usuario en todo momento.
