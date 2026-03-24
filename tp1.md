@@ -1,5 +1,15 @@
+## UNIVERSIDAD AUTÓNOMA DE ENTRE RÍOS - FACULTAD DE CIENCIA Y TECNOLOGÍA - INGENIERÍA EN TELECOMUNICACIONES
+
 # TRABAJO PRÁCTICO 1
 # REDES EMERGENTES Y CONECTIVIDAD MODERNA
+| Concepto | Detalle |
+| :--- | :--- |
+| **Materia** | Servicios de Telecomunicaciones y Redes |
+| **Año** | 2026 |
+| **Modalidad** | Grupal (2-3 integrantes) |
+| **Duración** | 3 semanas |
+| **Entrega** | Martes 31/3 (defensa: miércoles 1/4) |
+| **Integrantes** | Alma Ríos, Gastón Barreto |
 
 ### FASE 1: Problema disparador
 ------------------------
@@ -13,12 +23,12 @@ Si bien Wi-Fi 7 es la novedad, Wi-Fi 6 (802.11ax) fue diseñado precisamente con
 Aunque Wi-Fi 7 ofrece mejoras increíbles como canales de 320 MHz y la modulación 4096-QAM, en este escenario específico presenta dos barreras críticas:
 * Costo-Beneficio: El presupuesto requerido es considerablemente mayor y, para un grupo de 50 personas, el ancho de banda extra de Wi-Fi 7 podría quedar ocioso.
 * Ecosistema: De nada sirve tener un router Wi-Fi 7 si los dispositivos de los usuarios no soportan el estándar; terminarían conectándose usando protocolos anteriores, desperdiciando la inversión.
+![Comparación Wifi 6-7](https://www.profesionalreview.com/wp-content/uploads/2025/08/wifi-7-specs.png)
+
 
 Para el caso concreto de TechHub Coworking Wi-Fi 6 es más que suficiente. Es una tecnología madura, diseñada para la alta densidad y mucho más accesible económicamente. Wi-Fi 7 es el futuro, pero para cubrir 100 m2 con 50 usuarios, estaríamos haciendo un desperdicio de recursos. Con Wi-Fi 6 cubrimos la necesidad técnica con eficiencia y responsabilidad presupuestaria.
 
 2. **¿Cómo conecto las 3 sucursales de forma segura sin pagar un MPLS?**
-
-Si tenemos 3 sucursales y el presupuesto es una limitante, la respuesta técnica definitiva es implementar una VPN Site-to-Site (Sitio a Sitio). Aunque el MPLS es el “estándar” en rendimiento, para muchas organizaciones el costo simplemente no se justifica.
 
 El MPLS (Multi-Protocol Label Switching) funciona como una red privada física contratada a un proveedor. Es increíblemente rápida y segura porque el tráfico nunca toca la internet pública, pero tiene dos grandes problemas:
 * Costo elevado: Requiere infraestructura dedicada y mantenimiento gestionado por el proveedor.
@@ -49,6 +59,7 @@ Zigbee lleva más de una década en el mercado y es, posiblemente, el protocolo 
 * Red en Malla (Mesh): Cada bombilla inteligente conectada actúa como un repetidor, extendiendo la señal por toda la casa.
 * Independencia del Wi-Fi: No satura tu router principal, lo que evita que el internet se ponga lento cuando conectas muchas luces.
 * Madurez: Ya existen miles de productos económicos y probados que funcionan con Zigbee.
+![Zigbee](https://www.profesionalreview.com/wp-content/uploads/2025/04/zigbee-1.jpg)
 
 Matter no es exactamente un reemplazo de hardware, sino un estándar que usa el Protocolo de Internet (IP) para que dispositivos de distintas marcas (Apple, Google, Amazon) hablen el mismo idioma.
 * Interoperabilidad: Promete que no necesitaremos un "hub" o concentrador diferente para cada marca.
@@ -59,6 +70,7 @@ Para que esta mezcla de protocolos funcione como un solo reloj suizo, necesitamo
 * Adiós a las "islas tecnológicas": HA permite que una luz Zigbee de IKEA y un aire acondicionado Matter de otra marca se entiendan en un solo panel de control.
 * Privacidad y control local: A diferencia de soluciones comerciales, HA no necesita internet para funcionar. Las automatizaciones (como apagar el aire si no hay nadie en una sala de reuniones) ocurren dentro de nuestra red, protegiendo los datos del coworking.
 * Automatización inteligente: Nos permite crear reglas complejas, como: "Si el sensor de presencia no detecta movimiento en 15 minutos Y es después de las 20:00, apaga todo y activa la alarma".
+![Home Assistant](https://www.redeszone.net/app/uploads-redeszone.net/2024/04/Home_assistant_domotica_casa.jpg)
 
 Para el caso concreto de TechHub Coworking, siendo la prioridad la estabilidad y el presupuesto, la combinación ganadora es un servidor de Home Assistant con un adaptador Zigbee profesional. Esto nos da lo mejor de los tres mundos: la economía y estabilidad de Zigbee, la compatibilidad futura de Matter y la inteligencia centralizada de Home Assistant.
 
@@ -67,6 +79,7 @@ Para el caso concreto de TechHub Coworking, siendo la prioridad la estabilidad y
 Cuando tenemos una sola red para todo, un dispositivo de IoT (como una cámara o un termostato) con poca seguridad podría ser la puerta de entrada para que alguien acceda a las computadoras de los empleados. Para evitar esto, usamos las VLAN (Virtual LAN).
 
 Una VLAN nos permite crear "muros lógicos" dentro de nuestra red. Aunque todos los dispositivos estén conectados al mismo switch físico, el switch los trata como si estuvieran en redes totalmente separadas.
+![VLAN](https://acf.geeknetic.es/imgw/imagenes/auto/2025/5/15/epm-vlan-redes-empresariales.png?f=webp)
 
 Para resolver este caso concreto, lo ideal es configurar tres redes independientes con reglas de tráfico específicas:
 * VLAN 10 – Empleados: Es la red con mayor prioridad. Tiene acceso a los servidores internos, bases de datos e impresoras.
@@ -84,18 +97,19 @@ Para TechHub Coworking, implementar VLANs es la mejor forma de profesionalizar u
 
 Cuando una VPN entre sucursales se cae, el impacto es inmediato. No podemos esperar a que un usuario llame a quejarse; necesitamos automatización. Analizamos tres niveles de soluciones:
 
-| Característica | Netwatch (Mikrotik) | Software de alertas automáticas | Grafana + Prometheus|
-| -------| -------- | ---------- | --------- |
-| Complejidad | Baja (configuración rápida) | Media | Alta (requiere servidor dedicado) |
-| Método | Verificación por ping | Agentes de software | Recolección de métricas |
-| Visualización | Consola | Web básica | Dashboards interactivos |
+| Característica | Netwatch (Mikrotik) | Grafana + Prometheus|
+| -------| -------- | --------- |
+| Complejidad | Baja (configuración rápida) | Alta (requiere servidor dedicado) |
+| Método | Verificación por ping | Recolección de métricas |
+| Visualización | Consola | Dashboards interactivos |
 | Notificación | Scripts (Telegram, Email) | Email | Web| Multiplataforma |
 | Uso ideal | Reacciones rápidas en el router | Control de inventario y hardware | Monitoreo profesional de toda la IT |
 
 Análisis de las opciones:
 * Netwatch: Es ideal con routers MikroTik. Funciona enviando un "ping" constante a la IP del otro extremo de la VPN. Si falla, el router ejecuta un comando automático. Es la opción más liviana porque no requiere servidores externos para detectar el fallo.
-* Software de Monitoreo General: Se enfoca en el estado del hardware. Es muy útil para saber si la VPN cayó porque el servidor o el router se apagaron o fueron reemplazados, generando alertas automáticas a los responsables.
+![Netwatch](https://www.mikrotiklabs.com/wp-content/uploads/2019/08/Uso-de-Netwatch-1024x388.png)
 * Grafana: Es el estándar en la industria para la visualización de datos. No solo nos avisa si la VPN cayó, sino que nos muestra gráficas de latencia y consumo de ancho de banda. Si la VPN se vuelve lenta antes de caerse, Grafana nos permitirá ver esa tendencia en tiempo real.
+![Grafana](https://cdn.buttercms.com/9GGT1pHwQczrkjLCkWxc)
 
 Para el caso concreto TechHub Coworking lo ideal es un enfoque híbrido:
 * Usar Netwatch para la reacción inmediata: configurar un bot de Telegram que nos avise en menos de 10 segundos si el túnel cae. Es económico, rápido y eficiente.
@@ -166,3 +180,80 @@ La VPN suele operar en la Capa 3 (Red) del modelo OSI.
 ZTNA es la tecnología que aplica el concepto de Confianza Cero. A diferencia de la VPN, ZTNA opera normalmente en la Capa 7 (Aplicación).
 * Acceso granular: El usuario no se conecta "a la red", sino a una aplicación específica. Si un administrativo necesita entrar al sistema de gestión, solo ve eso; el resto de la red (servidores de cámaras, archivos de gerencia) es invisible para él.
 * Verificación constante: No basta con loguearse una vez. El sistema verifica el dispositivo, la ubicación y el comportamiento del usuario en todo momento.
+
+| Característica | VPN Tradicional | ZTNA |
+| :--- | :--- | :--- |
+| **Punto de acceso** | A la red completa (capa 3). | A aplicaciones específicas (capa 7). |
+| **Visibilidad** | El usuario ve todos los recursos IP. | Los recursos están ocultos por defecto. |
+| **Confianza** | Se confía tras el primer login. | No se confía en nadie, nunca. |
+| **Seguridad** | Riesgo de movimiento bilateral. | Ataques contenidos en una sola app. |
+
+Para el caso TechHub Coworking, donde hay cientos de personas entrando y saliendo, la VPN tradicional puede ser un riesgo si un invitado logra entrar en la red de empleados. Implementar ZTNA sería lo ideal a largo plazo: permitiría que cada miembro del coworking acceda solo a lo que pagó (por ejemplo, la impresora o el servidor de archivos común) sin comprometer la seguridad de toda la infraestructura.
+
+Ya sabemos que el modelo Zero Trust (ZTNA) es superior al de la VPN tradicional por su granularidad. Pero, ¿qué herramienta elegimos?
+Las opciones de VPN "Tradicional" (Capa 3):
+* IPsec: Es el estándar para conectar las sucursales (Site-to-Site). Es complejo de configurar y su NAT Traversal es limitado, lo que puede dar problemas si los routers de las sucursales tienen firewalls restrictivos.
+* OpenVPN: Es muy compatible, pero su velocidad es media. Para 200 personas consumiendo ancho de banda, se nos quedaría corto rápidamente.
+* WireGuard: Es la opción ganadora si decidimos quedarnos en el modelo VPN. Es muy rápida y fácil, perfecta para una "VPN moderna" que no retrase la conexión de los usuarios.
+
+El salto a Zero Trust: Tailscale
+* Tailscale es la opción con mejor seguridad y la más sencilla de implementar.
+* Zero Trust: Tailscale utiliza el protocolo WireGuard por debajo, pero añade una capa de gestión que permite aplicar políticas de "confianza cero" sin ser un experto en redes.
+* NAT Traversal: A diferencia de IPsec, Tailscale brilla en conectar dispositivos aunque estén detrás de firewalls complicados (como los de un coworking), asegurando que la conexión nunca se caiga.
+
+Para el caso TechHub Coworking, lo ideal es usar WireGuard o IPsec únicamente para la infraestructura base entre sucursales (donde tenemos control total de los routers) e implementar Tailscale para el acceso de los empleados y recursos críticos.
+#### Protocolos IoT
+
+| Protocolo | Capa | Alcance | Velocidad | Consumo | Uso ideal |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Zigbee** | Red y aplicación. | 10-100 m (Mesh) | Baja (250 kbps) | Muy bajo | Bombillas, sensores, cerraduras. |
+| **Thread** | Red (IPv6). | 10-100 m (Mesh) | Baja (250 kbps) | Muy bajo. | Base robusta para Matter. |
+| **Matter** | Aplicación. | Depende del medio. | Alta (vía WiFi-Ethernet) | Variable | Unificas marcas (Apple, Google). |
+| **LoRaWAN** | Red (sobre LoRa físico). | 2-15 km | Muy baja (0.3-50 kbps) | Extremadamente bajo | Sensores en campos o ciudades inteligentes. |
+| **MQTT** | Aplicación (mensajería). | Global (vía IP) | Alta (eficiente) | Bajo | Comunicación sensor a nube. |
+
+Zigbee vs. Thread:
+Ambos crean redes donde cada dispositivo repite la señal. La gran diferencia es que Thread habla el idioma de internet (IPv6) de forma nativa, mientras que Zigbee es un ecosistema cerrado que necesita un "puente" para salir a la red. Para el TechHub, Thread es más "futurista", pero Zigbee es más barato hoy.
+
+Matter (El traductor universal):
+Matter es un idioma. Matter puede viajar sobre Wi-Fi (para mucha velocidad, como una cámara) o sobre Thread (para bajo consumo, como un sensor de puerta). Su objetivo es que no necesites 20 apps en el celular.
+
+LoRaWAN (Larga distancia):
+A diferencia de los anteriores, LoRaWAN no es para una oficina, sino para distancias enormes. Usa frecuencias bajas que atraviesan paredes y edificios. Es perfecto si el TechHub quisiera, por ejemplo, monitorear el nivel de agua de un tanque en el techo o sensores de humedad en un jardín a 5 cuadras de distancia.
+
+MQTT (El mensajero liviano):
+MQTT no es una conexión inalámbrica, sino un protocolo de publicación/suscripción. Es increíblemente eficiente: en lugar de que el servidor pregunte "¿está prendida la luz?" cada segundo, el dispositivo solo envía un mensaje pequeñito cuando hay un cambio. Es el estándar de oro para enviar datos desde Home Assistant hacia la nube.
+
+Para el caso concreto TechHub Coworking, el plan ideal estaría distribuido:
+* Para el interior (Luces/aire): Usaremos Zigbee por costo o Thread si buscamos compatibilidad nativa con Matter.
+* Para la gestión de datos: Usaremos MQTT, ya que permite que miles de sensores reporten a nuestro panel de control sin saturar el ancho de banda.
+* Para expansión externa: Si el coworking crece a otros edificios cercanos, LoRaWAN sería la única forma económica de conectarlos sin pagar una fibra óptica o un enlace dedicado.
+
+### FASE 4: Implementación
+
+### FASE 5: Reflexión y defensa
+#### Reflexión individual
+
+### Recursos
+<https://www.netgear.com/hub/technology/wifi-7-vs-wifi-6/>
+<https://network-switch.com/es/blogs/wireless/what-is-wifi-7-and-which-should-you-choose>
+<https://olin.es/es/blog/wifi-7-vs-wifi-6/>
+<https://surfshark.com/es/blog/site-to-site-vpn>
+<https://www.mokosmart.com/es/iot-in-smart-home/>
+<https://reolink.com/blog/matter-vs-zigbee/>
+<https://www.redeszone.net/tutoriales/redes-cable/vlan-tipos-configuracion/>
+<https://www.institucional.frc.utn.edu.ar/sistemas/Areas/noticias/Detalle.asp?1877>
+<https://www.mikrotiklabs.com/2019/08/13/uso-de-netwatch-en-mikrotik/>
+<https://youtu.be/u1H676WhzQc?si=18u_xJVyj4hdB252>
+<https://ausum.cloud/que-es-grafana-y-como-se-usa-en-la-monitorizacion/>
+<https://www.tp-link.com/en/wifi7/#4K-QAM>
+<https://www.elcorteingles.es/electronica/A51900708-sistema-wi-fi-6-mesh-tp-link-deco-x10-ax1500-ia-seguridad-avanzada-puertos-gigabit-pack-de-3/?stype=text_box&color=Blanco>
+<https://www.amazon.es/Nuevo-TP-Link-Deco-XE75-3-Pack/dp/B09ZRY9YHB?maas=maas_adg_A4036A60CCA4BDB4097756EE13ECBAE5_afap_abs&ref_=aa_maas&tag=maas>
+<https://www.amazon.es/dp/B0BRRH519K?maas=maas_adg_C745890868FB6D42C2B7AEB11684FB16_afap_abs&ref_=aa_maas&tag=maas&th=1>
+<https://youtu.be/CvUBCouzKtU?si=8qR66IdAsss-3Icf>
+<https://www.netgear.com/hub/technology/wifi-7-vs-wifi-6/#:~:text=With%20its%20faster%20speeds%2C%20lower%20latency%2C%20and,significant%20improvements%20to%20meet%20our%20growing%20requirements>
+<https://www.profesionalreview.com/2024/05/26/wi-fi-7-vs-wi-fi-6e/>
+<https://www.rtings.com/router/learn/wifi-6-vs-wifi-7>
+<https://www.cloudflare.com/learning/access-management/what-is-ztna/>
+<https://www.aqara.com/en/blog/zigbee-vs-thread-vs-matter-whats-the-difference/>
+<https://reolink.com/blog/matter-vs-zigbee/>
