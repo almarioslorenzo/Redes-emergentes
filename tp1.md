@@ -231,14 +231,12 @@ Para el caso concreto TechHub Coworking, el plan ideal estaría distribuido:
 
 ### FASE 4: Implementación
 #### CONEXIÓN ZEROTIER
-ZeroTier es una solución de red de confianza cero (Zero Trust) que permite conectar dispositivos de forma segura a través de Internet, independientemente de su ubicación física. Funciona como un switch virtual basado en software que crea una Red de Área Local Virtual (VLAN) de capa 2 sobre la infraestructura de red existente.
-Para lograr esto, utiliza servidores centrales que coordinan los nodos de la red, facilitando la gestión de las conexiones y permitiendo que los dispositivos se comuniquen entre sí como si estuvieran conectados al mismo router físico, garantizando la seguridad mediante el cifrado de extremo a extremo.
-Para el desarrollo de este trabajo práctico, hemos implementado ZeroTier con el objetivo de establecer una conexión remota eficiente y estable. El esquema de trabajo se define de la siguiente manera:
-*Host de Servidor: Se utiliza una PC de escritorio como servidor principal, la cual aloja la máquina virtual donde reside el entorno de simulación.
-*Entorno de Simulación: Dentro de dicha máquina virtual se ejecuta GNS3 (v3.0), plataforma encargada de procesar las topologías y el tráfico de red del proyecto.
-*Acceso Remoto: Mediante el uso de un túnel VPN gestionado por ZeroTier, es posible acceder a la instancia de GNS3 desde nuestras laptops de forma transparente.
-Esta configuración permite centralizar la carga de procesamiento en el hardware de la PC de escritorio (servidor), evitando limitaciones de rendimiento en las laptops y permitiendo la colaboración en el entorno de GNS3 a través de una conexión segura y de baja latencia.
-Para la ejecución del trabajo práctico, establecimos un túnel de capa 2 mediante la Network ID de ZeroTier, vinculando nuestras laptops con la PC de escritorio que actúa como servidor. Esta configuración asigna una IP virtual privada a cada nodo, permitiendo que la interfaz de GNS3 (v3.0) en las laptops se conecte de forma remota y segura al motor de simulación alojado en la máquina virtual del equipo de escritorio, centralizando así el procesamiento de la red.
+ZeroTier es una solución de red de confianza cero (Zero Trust) que actúa como un switch virtual basado en software, creando una Red de Área Local Virtual (VLAN) de capa 2 sobre la infraestructura de internet existente. Mediante servidores centrales que coordinan los nodos y el uso de cifrado de extremo a extremo, permite que dispositivos remotos se comuniquen de forma segura como si estuvieran conectados a un mismo router físico.
+Para el desarrollo de este trabajo práctico, implementamos ZeroTier con el fin de establecer una conexión remota eficiente entre nuestras laptops y una PC de escritorio que actúa como servidor principal. El esquema se estructura de la siguiente manera:
+Entorno de Simulación: El servidor de escritorio aloja una máquina virtual donde se ejecuta GNS3 (v3.0), plataforma encargada de procesar las topologías y el tráfico de red del proyecto.
+Acceso y Gestión: Mediante un túnel de capa 2 definido por una Network ID y la asignación de IPs virtuales privadas, la interfaz de GNS3 en las laptops se conecta de forma transparente al motor de simulación remoto.
+Esta configuración permite centralizar la alta carga de procesamiento en el hardware del servidor, evitando limitaciones de rendimiento en las laptops y garantizando un entorno de colaboración seguro y de baja latencia para la ejecución del TP. 
+
 ### FASE 5: Reflexión y defensa
 #### Reflexión individual
 
@@ -263,5 +261,6 @@ Para la ejecución del trabajo práctico, establecimos un túnel de capa 2 media
 <https://www.profesionalreview.com/2024/05/26/wi-fi-7-vs-wi-fi-6e/>
 <https://www.rtings.com/router/learn/wifi-6-vs-wifi-7>
 <https://www.cloudflare.com/learning/access-management/what-is-ztna/>
+<https://www-zerotier-com.translate.goog/blog/zerotier-review-everything-you-need-to-know-about-zerotier-in-2023/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc> 
 <https://www.aqara.com/en/blog/zigbee-vs-thread-vs-matter-whats-the-difference/>
 <https://reolink.com/blog/matter-vs-zigbee/>
