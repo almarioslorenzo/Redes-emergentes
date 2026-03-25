@@ -231,12 +231,14 @@ Para el caso concreto TechHub Coworking, el plan ideal estaría distribuido:
 
 ### FASE 4: Implementación
 #### CONEXIÓN ZEROTIER
-->Definicion zerotier
-->Para que lo conectamos
-->Como lo conectamos
-
-
-
+ZeroTier es una solución de red de confianza cero (Zero Trust) que permite conectar dispositivos de forma segura a través de Internet, independientemente de su ubicación física. Funciona como un switch virtual basado en software que crea una Red de Área Local Virtual (VLAN) de capa 2 sobre la infraestructura de red existente.
+Para lograr esto, utiliza servidores centrales que coordinan los nodos de la red, facilitando la gestión de las conexiones y permitiendo que los dispositivos se comuniquen entre sí como si estuvieran conectados al mismo router físico, garantizando la seguridad mediante el cifrado de extremo a extremo.
+Para el desarrollo de este trabajo práctico, hemos implementado ZeroTier con el objetivo de establecer una conexión remota eficiente y estable. El esquema de trabajo se define de la siguiente manera:
+*Host de Servidor: Se utiliza una PC de escritorio como servidor principal, la cual aloja la máquina virtual donde reside el entorno de simulación.
+*Entorno de Simulación: Dentro de dicha máquina virtual se ejecuta GNS3 (v3.0), plataforma encargada de procesar las topologías y el tráfico de red del proyecto.
+*Acceso Remoto: Mediante el uso de un túnel VPN gestionado por ZeroTier, es posible acceder a la instancia de GNS3 desde nuestras laptops de forma transparente.
+Esta configuración permite centralizar la carga de procesamiento en el hardware de la PC de escritorio (servidor), evitando limitaciones de rendimiento en las laptops y permitiendo la colaboración en el entorno de GNS3 a través de una conexión segura y de baja latencia.
+Para la ejecución del trabajo práctico, establecimos un túnel de capa 2 mediante la Network ID de ZeroTier, vinculando nuestras laptops con la PC de escritorio que actúa como servidor. Esta configuración asigna una IP virtual privada a cada nodo, permitiendo que la interfaz de GNS3 (v3.0) en las laptops se conecte de forma remota y segura al motor de simulación alojado en la máquina virtual del equipo de escritorio, centralizando así el procesamiento de la red.
 ### FASE 5: Reflexión y defensa
 #### Reflexión individual
 
