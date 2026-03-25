@@ -230,6 +230,12 @@ Para el caso concreto TechHub Coworking, el plan ideal estaría distribuido:
 * Para expansión externa: Si el coworking crece a otros edificios cercanos, LoRaWAN sería la única forma económica de conectarlos sin pagar una fibra óptica o un enlace dedicado.
 
 ### FASE 4: Implementación
+#### CONEXIÓN ZEROTIER
+->Definicion zerotier
+->Para que lo conectamos
+->Como lo conectamos
+
+
 
 ### FASE 5: Reflexión y defensa
 #### Reflexión individual
