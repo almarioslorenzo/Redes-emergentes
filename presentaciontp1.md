@@ -65,11 +65,9 @@ style: |
 
 Se establece un esquema de segmentación para mitigar dominios de broadcast y garantizar la seguridad perimetral entre perfiles de usuario:
 
-* **VLAN 10 - Management:** Gestión de switches, APs y gateways.
-* **VLAN 20 - Producción:** Tráfico exclusivo para usuarios residentes.
-* **VLAN 30 - Automatización/IoT:** Protocolos de control y sensores.
-* **VLAN 40 - Telefonía IP:** Priorización de tráfico mediante colas de QoS.
-* **VLAN 99 - Invitados:** Acceso restringido con aislamiento de cliente.
+* **VLAN 10 - Empleados:** Gestión de switches, APs y gateways.
+* **VLAN 20 - Invitados:** Tráfico exclusivo para usuarios residentes.
+* **VLAN 30 - IoT:** Protocolos de control y sensores.
 
 ---
 
