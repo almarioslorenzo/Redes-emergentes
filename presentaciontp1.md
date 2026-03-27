@@ -107,7 +107,7 @@ Sobre la infraestructura física, se establece un esquema de segmentación para 
 
 Para la gestión de clima e iluminación, se propone un ecosistema independiente de la red de datos principal:
 
-* **Protocolos:** Uso de **Zigbee/Matter** para crear una red en malla (Mesh) de bajo consumo que no sature el espectro Wi-Fi.
+* **Protocolos:** Uso de **Zigbee** para crear una red en malla (Mesh) de bajo consumo que no sature el espectro Wi-Fi.
 * **Plataforma de Gestión:** **Home Assistant** bajo entorno local, garantizando privacidad y control total sin dependencia de nubes externas.
 * **Eficiencia:** Automatización basada en reglas de presencia para la optimización del consumo eléctrico.
 
