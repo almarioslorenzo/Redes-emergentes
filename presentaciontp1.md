@@ -75,10 +75,9 @@ WiFi 7 es el futuro, pero para la realidad actual de TechHub, WiFi 6E ofrece el 
 
 Sobre la infraestructura física, se establece un esquema de segmentación para mitigar dominios de broadcast y garantizar la seguridad perimetral:
 
-* **VLAN 10 - Gestión (Management):** Acceso restringido a switches, APs y gateways.
-* **VLAN 20 - Producción/Empleados:** Acceso a servidores internos y recursos corporativos con prioridad QoS.
-* **VLAN 30 - Automatización/IoT:** Red restringida y unidireccional para sensores y sistemas de control.
-* **VLAN 99 - Invitados:** Acceso exclusivo a Internet con aislamiento de cliente (*Client Isolation*).
+* **VLAN 10 - Empleados:** Es la red con mayor prioridad. Tiene acceso a los servidores internos, bases de datos e impresoras.
+* **VLAN 20 -Invitados:** Solo tiene salida a Internet. Nunca puedan ver los equipos de la oficina.
+* **VLAN 30 - IoT:** IoT: Reservada para sensores, aires acondicionados y cámaras.
 
 ---
 
