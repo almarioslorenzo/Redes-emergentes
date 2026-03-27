@@ -64,11 +64,8 @@ style: |
 #### Selección de Protocolo IEEE 802.11ax (Wi-Fi 6)
 
 Se determina el uso de Wi-Fi 6 como solución técnica para gestionar la alta densidad de usuarios en el edificio:
-
-* **OFDMA:** Optimización del espectro mediante la subdivisión de canales, reduciendo la latencia en entornos concurrentes.
-* **MU-MIMO 4x4:** Capacidad de transmisión espacial múltiple para dispositivos de alta demanda.
-* **BSS Coloring:** Mitigación de interferencia de co-canal en el despliegue vertical entre pisos.
-* **Eficiencia Energética:** Uso de Target Wake Time (TWT) para prolongar la autonomía de dispositivos finales e IoT.
+<img width="607" height="293" alt="image" src="https://github.com/user-attachments/assets/3f13d281-8777-4894-9e6d-5e1179f4ca39" /> 
+WiFi 7 es el futuro, pero para la realidad actual de TechHub, WiFi 6E ofrece el mejor equilibrio entre capacidad de dispositivos y responsabilidad financiera.
 
 ---
 
