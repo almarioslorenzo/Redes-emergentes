@@ -2,82 +2,120 @@
 marp: true
 theme: uncover
 paginate: true
-header: 'Propuesta Técnica: TechHub Coworking'
-footer: 'Servicios de Telecomunicaciones y Redes - TPI 1'
-backgroundColor: #f8f9fa
+header: 'Propuesta Técnica: Infraestructura TechHub Coworking'
+footer: 'Cátedra de Redes y Servicios de Telecomunicaciones - TPI 1'
+backgroundColor: #ffffff
 style: |
   section {
-    font-size: 24px;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-family: 'Arial', sans-serif;
     text-align: left;
-    color: #333;
+    color: #1a1a1a;
   }
-  h1 { color: #003366; text-align: center; }
-  h2 { color: #00509d; border-bottom: 2px solid #00509d; padding-bottom: 10px; }
-  h4 { color: #d62828; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-  strong { color: #00509d; }
+  h1 { color: #002855; text-align: center; font-size: 1.6em; }
+  h2 { color: #002855; border-bottom: 1px solid #002855; padding-bottom: 8px; margin-bottom: 20px; }
+  h4 { color: #800000; margin-bottom: 5px; text-transform: uppercase; }
+  strong { color: #002855; }
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    gap: 30px;
     align-items: start;
   }
   .highlight {
-    background: #e9ecef;
+    background: #f4f4f4;
     padding: 15px;
-    border-left: 5px solid #00509d;
-    border-radius: 4px;
-  }
-  blockquote {
-    font-style: italic;
-    color: #555;
-    background: #f1f1f1;
-    border-left: 10px solid #ccc;
-    padding: 0.5em 10px;
+    border-left: 4px solid #002855;
   }
 ---
 
-# Consultoría Tecnológica
-## **TechHub Coworking**
+# Consultoría de Infraestructura Tecnológica
+## **TechHub Coworking - Nodo Paraná**
+### Proyecto de Reingeniería de Redes de Alta Densidad
 
 ---
 
-##  Problema disparador 
-**Proyecto:** Renovación de infraestructura en Paraná.
+## 1. Definición del Escenario Crítico
+**Contexto del Proyecto:** Renovación integral de la infraestructura de conectividad.
 
 <div class="grid">
 <div class="highlight">
 
-**Infraestructura Base**
-* Edificio 3 pisos.
-* Fibra 500 Mbps / Cat6.
-* 200 dispositivos simultáneos.
+**Requerimientos de Planta Física**
+* Edificio corporativo de tres niveles.
+* Backbone de fibra óptica de 500 Mbps.
+* Canalización mediante Categoría 6 (GbE).
+* Capacidad para 200 nodos concurrentes.
 </div>
 
-<div>
+<div class="highlight">
 
-**Requerimientos Críticos**
-* Interconexión de 3 sucursales.
-* Segmentación estricta de tráfico.
-* Automatización (Luces/Clima).
-* **Premisa:** Soluciones *Open-Source*.
+**Objetivos de Diseño**
+* Interconexión segura de tres sucursales.
+* Segmentación lógica de tráfico (VLANs).
+* Integración de domótica (Control de clima).
+* Adopción de soluciones Open-Source.
 </div>
 </div>
-
----<img width="900" height="381" alt="image" src="https://github.com/user-attachments/assets/bc746222-d98d-456b-b709-d000784660c0" /> 
-
-
-## 📶 Conectividad Inalámbrica
-#### ¿Wi-Fi 6 o Wi-Fi 7?
-
-**Decisión Técnica: Wi-Fi 6 (802.11ax)**
-
-* **Densidad Inteligente:** OFDMA y MU-MIMO para manejar 50+ usuarios por zona sin degradación.
-* **Compatibilidad Real:** Aprovechamiento inmediato por dispositivos actuales de los coworkers.
-* **Eficiencia Presupuestaria:** Máximo rendimiento sin el sobrecosto innecesario de Wi-Fi 7 para una WAN de 500 Mbps.
 
 ---
 
+## 2. Segmentación y Jerarquía de Red (VLANs)
+#### Optimización del Tráfico y Seguridad de Capa 2
+
+Se establece un esquema de segmentación para mitigar dominios de broadcast y garantizar la seguridad perimetral entre perfiles de usuario:
+
+* **VLAN 10 - Management:** Gestión de switches, APs y gateways.
+* **VLAN 20 - Producción:** Tráfico exclusivo para usuarios residentes.
+* **VLAN 30 - Automatización/IoT:** Protocolos de control y sensores.
+* **VLAN 40 - Telefonía IP:** Priorización de tráfico mediante colas de QoS.
+* **VLAN 99 - Invitados:** Acceso restringido con aislamiento de cliente.
+
+---
+
+## 3. Estándar de Acceso Inalámbrico
+#### Implementación de Protocolo IEEE 802.11ax (Wi-Fi 6)
+
+La selección tecnológica responde a la necesidad de gestionar alta densidad de usuarios en espectros saturados:
+
+* **OFDMA:** Subdivisión de canales para atención simultánea de múltiples estaciones, reduciendo la latencia de red.
+* **MU-MIMO 4x4:** Transmisión espacial múltiple para dispositivos de alta demanda de ancho de banda.
+* **BSS Coloring:** Mitigación de interferencia de co-canal en el despliegue vertical del edificio.
+* **Eficiencia Energética:** Uso de Target Wake Time (TWT) para dispositivos finales.
+
+---
+
+## 4. Arquitectura de Seguridad y Enlace
+#### Implementación de Soluciones Basadas en Software Libre
+
+La infraestructura se sustenta en estándares abiertos para garantizar escalabilidad y auditoría de seguridad:
+
+<div class="grid">
+<div class="highlight">
+
+**Gateway y Firewall Perimetral**
+* Implementación de **pfSense** como sistema de gestión de amenazas y ruteo centralizado.
+</div>
+
+<div class="highlight">
+
+**Interconexión Multi-Sitio**
+* Configuración de túneles VPN mediante **WireGuard**, priorizando el rendimiento y cifrado moderno.
+</div>
+</div>
+
+> El Nodo Paraná actúa como punto de concentración de servicios para la interconexión con las sucursales remotas.
+
+---
+
+## 5. Metodología de Validación
+#### Simulación y Despliegue Técnico
+
+1. **Entorno de Simulación:** Modelado de la topología lógica en **GNS3 3.0**.
+2. **Servicios de Red:** Configuración de servicios críticos (DNS, DHCP, NTP) bajo entornos Linux/Open-Source.
+3. **Control de Versiones:** Documentación técnica y repositorio de configuraciones en **GitHub**.
+
+---
 ## 🔒 Interconexión de Sedes
 #### VPN Site-to-Site vs. MPLS
 
