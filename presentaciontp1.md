@@ -65,6 +65,7 @@ style: |
 
 Se determina el uso de Wi-Fi 6 como solución técnica para gestionar la alta densidad de usuarios en el edificio:
 <img width="607" height="293" alt="image" src="https://github.com/user-attachments/assets/3f13d281-8777-4894-9e6d-5e1179f4ca39" /> 
+
 WiFi 7 es el futuro, pero para la realidad actual de TechHub, WiFi 6E ofrece el mejor equilibrio entre capacidad de dispositivos y responsabilidad financiera.
 
 ---
