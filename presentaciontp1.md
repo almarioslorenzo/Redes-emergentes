@@ -126,11 +126,19 @@ Para la gestión de clima e iluminación, se propone un ecosistema independiente
 
 ---
 
-## 7. Metodología de Validación
-#### Simulación y Control de Versiones
 
-* **Entorno de Simulación:** Modelado de la topología lógica en **GNS3 3.0**.
-* **Servicios de Red:** Configuración de servicios críticos (DNS, DHCP, NTP) bajo entornos Linux.
-* **Documentación:** Repositorio técnico y control de versiones en **GitHub**.
+## 7. Metodología de Validación
+#### Entorno de Simulación y Laboratorio Virtual
+
+Para la validación de la propuesta técnica, se desplegó un entorno controlado que permite replicar el comportamiento real de la red:
+
+* **Virtualización:** Uso de **GNS3 3.0** sobre máquinas virtuales (**VMware/VirtualBox**) para aislar el cómputo de la red y emular el hardware de red de forma precisa.
+* **Conectividad Remota:** Implementación de **ZeroTier** como SDN (Software Defined Network) para establecer una capa de red virtual de Capa 2. Esto permitió:
+    * El trabajo colaborativo entre integrantes en diferentes ubicaciones.
+    * La interconexión de nodos de simulación con dispositivos físicos externos.
+* **Control de Versiones:** Documentación de configuraciones y topologías en **GitHub**, garantizando la trazabilidad del diseño.
+<img width="903" height="253" alt="image" src="https://github.com/user-attachments/assets/22699d68-510e-4cfb-8ac2-2a1ba3f9676a" />
+<img width="1566" height="249" alt="image" src="https://github.com/user-attachments/assets/2ef0afb0-d619-4e6b-8074-6c7a78341ab8" />
+
 
 ---
