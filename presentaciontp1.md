@@ -42,7 +42,7 @@ style: |
 
 ---
 
-## 🎯 El Desafío
+##  Problema disparador 
 **Proyecto:** Renovación de infraestructura en Paraná.
 
 <div class="grid">
