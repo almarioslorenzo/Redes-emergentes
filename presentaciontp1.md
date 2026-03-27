@@ -93,8 +93,8 @@ Sobre la infraestructura física, se establece un esquema de segmentación para 
 
 <div class="highlight">
 
-**Interconexión Multi-Sitio (VPN)**
-* Configuración de túneles mediante **WireGuard** o **IPsec**, garantizando cifrado de grado empresarial sobre internet pública.
+**Interconexión Site-to-Site (VPN)**
+* Configuración de túneles mediante **WireGuard**, garantizando cifrado de grado empresarial sobre internet pública.
 </div>
 </div>
 
