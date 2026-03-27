@@ -64,7 +64,8 @@ style: |
 </div>
 </div>
 
----
+---<img width="900" height="381" alt="image" src="https://github.com/user-attachments/assets/bc746222-d98d-456b-b709-d000784660c0" /> 
+
 
 ## 📶 Conectividad Inalámbrica
 #### ¿Wi-Fi 6 o Wi-Fi 7?
