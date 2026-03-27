@@ -41,7 +41,7 @@ style: |
 <div class="grid">
 <div class="highlight">
 
-**Requerimientos de Planta Física**
+**Infraestructura de Planta Física**
 * Edificio corporativo de tres niveles.
 * Backbone de fibra óptica de 500 Mbps.
 * Canalización mediante Categoría 6 (GbE).
@@ -52,41 +52,40 @@ style: |
 
 **Objetivos de Diseño**
 * Interconexión segura de tres sucursales.
+* Implementación de estándar Wi-Fi 6.
 * Segmentación lógica de tráfico (VLANs).
-* Integración de domótica (Control de clima).
 * Adopción de soluciones Open-Source.
 </div>
 </div>
 
 ---
 
-## 2. Segmentación y Jerarquía de Red (VLANs)
-#### Optimización del Tráfico y Seguridad de Capa 2
+## 2. Estándar de Acceso Inalámbrico
+#### Selección de Protocolo IEEE 802.11ax (Wi-Fi 6)
 
-Se establece un esquema de segmentación para mitigar dominios de broadcast y garantizar la seguridad perimetral entre perfiles de usuario:
+Se determina el uso de Wi-Fi 6 como solución técnica para gestionar la alta densidad de usuarios en el edificio:
 
-* **VLAN 10 - Empleados:** Tiene acceso a los servidores internos, bases de datos e impresoras.
-* **VLAN 20 - Invitados:** Solo tiene salida a Internet.  Nunca puedan ver los equipos de la oficina.
-* **VLAN 30 - IoT:**  Reservada para sensores, aires acondicionados y cámaras.
+* **OFDMA:** Optimización del espectro mediante la subdivisión de canales, reduciendo la latencia en entornos concurrentes.
+* **MU-MIMO 4x4:** Capacidad de transmisión espacial múltiple para dispositivos de alta demanda.
+* **BSS Coloring:** Mitigación de interferencia de co-canal en el despliegue vertical entre pisos.
+* **Eficiencia Energética:** Uso de Target Wake Time (TWT) para prolongar la autonomía de dispositivos finales e IoT.
 
 ---
 
-## 3. Estándar de Acceso Inalámbrico
-#### Implementación de Protocolo IEEE 802.11ax (Wi-Fi 6)
+## 3. Segmentación Jerárquica de Red (VLANs)
+#### Optimización del Tráfico y Seguridad de Capa 2
 
-La selección tecnológica responde a la necesidad de gestionar alta densidad de usuarios en espectros saturados:
+Sobre la infraestructura física, se establece un esquema de segmentación para mitigar dominios de broadcast y garantizar la seguridad perimetral:
 
-* **OFDMA:** Subdivisión de canales para atención simultánea de múltiples estaciones, reduciendo la latencia de red.
-* **MU-MIMO 4x4:** Transmisión espacial múltiple para dispositivos de alta demanda de ancho de banda.
-* **BSS Coloring:** Mitigación de interferencia de co-canal en el despliegue vertical del edificio.
-* **Eficiencia Energética:** Uso de Target Wake Time (TWT) para dispositivos finales.
+* **VLAN 10 - Gestión (Management):** Acceso restringido a switches, APs y gateways.
+* **VLAN 20 - Producción/Empleados:** Acceso a servidores internos y recursos corporativos con prioridad QoS.
+* **VLAN 30 - Automatización/IoT:** Red restringida y unidireccional para sensores y sistemas de control.
+* **VLAN 99 - Invitados:** Acceso exclusivo a Internet con aislamiento de cliente (*Client Isolation*).
 
 ---
 
 ## 4. Arquitectura de Seguridad y Enlace
 #### Implementación de Soluciones Basadas en Software Libre
-
-La infraestructura se sustenta en estándares abiertos para garantizar escalabilidad y auditoría de seguridad:
 
 <div class="grid">
 <div class="highlight">
@@ -97,79 +96,44 @@ La infraestructura se sustenta en estándares abiertos para garantizar escalabil
 
 <div class="highlight">
 
-**Interconexión Multi-Sitio**
-* Configuración de túneles VPN mediante **WireGuard**, priorizando el rendimiento y cifrado moderno.
+**Interconexión Multi-Sitio (VPN)**
+* Configuración de túneles mediante **WireGuard** o **IPsec**, garantizando cifrado de grado empresarial sobre internet pública.
 </div>
 </div>
 
-> El Nodo Paraná actúa como punto de concentración de servicios para la interconexión con las sucursales remotas.
+> El Nodo Paraná actúa como punto de concentración de servicios para la interconexión con las sucursales remotas, eliminando costos fijos de líneas dedicadas.
 
 ---
 
-## 5. Metodología de Validación
-#### Simulación y Despliegue Técnico
+## 5. Automatización e Infraestructura IoT
+#### Gestión Local e Interoperable
 
-1. **Entorno de Simulación:** Modelado de la topología lógica en **GNS3 3.0**.
-2. **Servicios de Red:** Configuración de servicios críticos (DNS, DHCP, NTP) bajo entornos Linux/Open-Source.
-3. **Control de Versiones:** Documentación técnica y repositorio de configuraciones en **GitHub**.
+Para la gestión de clima e iluminación, se propone un ecosistema independiente de la red de datos principal:
 
----
-## 🔒 Interconexión de Sedes
-#### VPN Site-to-Site vs. MPLS
-
-**Propuesta: Túneles Cifrados IPsec**
-
-* **Seguridad:** Cifrado, integridad y autenticación de grado empresarial sobre internet pública.
-* **Ahorro Operativo:** Eliminación de costos fijos de líneas dedicadas (MPLS).
-* **Flexibilidad:** Escalabilidad inmediata y gestión autónoma mediante software.
+* **Protocolos:** Uso de **Zigbee/Matter** para crear una red en malla (Mesh) de bajo consumo que no sature el espectro Wi-Fi.
+* **Plataforma de Gestión:** **Home Assistant** bajo entorno local, garantizando privacidad y control total sin dependencia de nubes externas.
+* **Eficiencia:** Automatización basada en reglas de presencia para la optimización del consumo eléctrico.
 
 ---
 
-## 🏠 Automatización e IoT
-#### Ecosistema Local e Interoperable
+## 6. Monitoreo y Disponibilidad
+#### Gestión Proactiva del Servicio
 
-<div class="grid">
-<div class="highlight">
+1. **Detección de Fallas (Netwatch):**
+   * Scripts automatizados para monitoreo de estados mediante ICMP.
+   * Notificaciones inmediatas vía API (Telegram/Email) ante caídas de enlace.
 
-**Protocolos: Zigbee + Matter**
-* Red en malla (Mesh) de bajo consumo.
-* No satura el Wi-Fi principal.
-* Garantía de futuro (Matter).
-</div>
-
-<div>
-
-**Gestión: Home Assistant**
-* **Privacidad:** Procesamiento 100% local.
-* **Control Total:** Unificación de marcas y ahorro energético mediante reglas de presencia.
-</div>
-</div>
+2. **Visualización de Métricas (Grafana + Prometheus):**
+   * Dashboards para análisis de latencia, tráfico y consumo de recursos en tiempo real.
+   * Identificación predictiva de cuellos de botella en la infraestructura.
 
 ---
 
-## 🧱 Segmentación de Red
-#### Arquitectura de VLANs
+## 7. Metodología de Validación
+#### Simulación y Control de Versiones
 
-* **VLAN Empleados:** Acceso corporativo total y prioridad de tráfico.
-* **VLAN Invitados:** Acceso exclusivo a internet con aislamiento (*Client Isolation*).
-* **VLAN IoT:** Red restringida y unidireccional para sensores/cámaras.
-
-> **Resultado:** Reducción de broadcast, mejora de rendimiento y contención de amenazas ante dispositivos vulnerables.
+* **Entorno de Simulación:** Modelado de la topología lógica en **GNS3 3.0**.
+* **Servicios de Red:** Configuración de servicios críticos (DNS, DHCP, NTP) bajo entornos Linux.
+* **Documentación:** Repositorio técnico y control de versiones en **GitHub**.
 
 ---
-
-## 🛠️ Monitoreo y Disponibilidad
-#### ¿Cómo nos enteramos si algo falla?
-
-1. **Reacción Inmediata (Netwatch - MikroTik):**
-   * Scripts automáticos por caída de *ping*.
-   * Alerta vía **Telegram** en < 10 segundos.
-
-2. **Visibilidad Avanzada (Grafana + Prometheus):**
-   * Dashboards para análisis de latencia y consumo.
-   * Identificación proactiva de cuellos de botella.
-
----
-
-
-
