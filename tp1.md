@@ -232,17 +232,22 @@ Para el caso concreto TechHub Coworking, el plan ideal estaría distribuido:
 ### FASE 4: Implementación
 Topologia propuesta: 
 <img width="1600" height="949" alt="image" src="https://github.com/user-attachments/assets/bf91802c-d1e6-4d1f-adb5-b0f76886c893" />
+
 Verificación del Direccionamiento (IPs)
 Cada VLAN debe tener su propia puerta de enlace (Gateway):
 <img width="816" height="370" alt="image" src="https://github.com/user-attachments/assets/3741da51-5d69-48fa-8c09-5b1b02cf0738" />
+
 Verificación de Interfaces y VLANs:
 <img width="890" height="374" alt="image" src="https://github.com/user-attachments/assets/95d41d5c-bf79-4b6d-9bb3-db1f6315b0d8" />
+
 Verificación del Servidor DHCP
 Este es el motor que le da vida a las PCs:
 <img width="866" height="340" alt="image" src="https://github.com/user-attachments/assets/d69e2f07-2e62-4a77-b163-85007a0fb41d" />
+
 Verificación del Servidor DHCP
 Este es el motor que le da vida a las PCs:
 <img width="866" height="340" alt="image" src="https://github.com/user-attachments/assets/6323b24e-87ae-4b18-b910-6d9a4b417466" />
+
 Verificación del "Puente" al Mundo Real
 Para que el internet y las VLANs lleguen al switch, la conexión física debe estar activa. La ether2 (que va al switch) DEBE estar en la lista vinculada al bridge-LAN:
 <img width="964" height="124" alt="image" src="https://github.com/user-attachments/assets/b19bf7a0-b35f-4f8d-a9d1-db25d7cb63b7" />
