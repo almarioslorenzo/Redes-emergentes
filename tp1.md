@@ -252,6 +252,8 @@ Verificación del "Puente" al Mundo Real
 Para que el internet y las VLANs lleguen al switch, la conexión física debe estar activa. La ether2 (que va al switch) DEBE estar en la lista vinculada al bridge-LAN (router Parana):
 <img width="964" height="124" alt="image" src="https://github.com/user-attachments/assets/b19bf7a0-b35f-4f8d-a9d1-db25d7cb63b7" />
 
+La PC logra hablar con el switch y llegar al router. El cable físico virtual funciona y el switch está dejando pasar los paquetes:
+<img width="608" height="82" alt="image" src="https://github.com/user-attachments/assets/3d6cd9a0-a336-499a-9a89-5bc9cae00a86" />
 
 
 
