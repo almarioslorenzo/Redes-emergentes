@@ -78,7 +78,19 @@ Sobre la infraestructura física, se establece un esquema de segmentación para 
 * **VLAN 10 - Empleados:** Es la red con mayor prioridad. Tiene acceso a los servidores internos, bases de datos e impresoras.
 * **VLAN 20 -Invitados:** Solo tiene salida a Internet. Nunca puedan ver los equipos de la oficina.
 * **VLAN 30 - IoT:** IoT: Reservada para sensores, aires acondicionados y cámaras.
-
+<img width="890" height="374" alt="image" src="https://github.com/user-attachments/assets/3e2956b7-9198-48b3-bf07-a88348ad428f" />
+Internet
+   │
+Router MikroTik
+   │
+bridge-LAN
+   ├── VLAN 11 (empleados p1)
+   ├── VLAN 21 (invitados p1)
+   ├── VLAN 31 (IoT p1)
+   │
+   ├── VLAN 12 (empleados p2)
+   ├── VLAN 22 (invitados p2)
+   ├── VLAN 32 (IoT p2)
 ---
 
 ## 4. Arquitectura de Seguridad y Enlace
