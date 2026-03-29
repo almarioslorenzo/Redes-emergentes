@@ -230,6 +230,12 @@ Para el caso concreto TechHub Coworking, el plan ideal estaría distribuido:
 * Para expansión externa: Si el coworking crece a otros edificios cercanos, LoRaWAN sería la única forma económica de conectarlos sin pagar una fibra óptica o un enlace dedicado.
 
 ### FASE 4: Implementación
+Topologia propuesta: 
+<img width="1600" height="949" alt="image" src="https://github.com/user-attachments/assets/bf91802c-d1e6-4d1f-adb5-b0f76886c893" />
+Verificación de Interfaces y VLANs:
+<img width="890" height="374" alt="image" src="https://github.com/user-attachments/assets/95d41d5c-bf79-4b6d-9bb3-db1f6315b0d8" />
+
+
 #### CONEXIÓN ZEROTIER
 ZeroTier es una solución de red de confianza cero (Zero Trust) que actúa como un switch virtual basado en software, creando una Red de Área Local Virtual (VLAN) de capa 2 sobre la infraestructura de internet existente. Mediante servidores centrales que coordinan los nodos y el uso de cifrado de extremo a extremo, permite que dispositivos remotos se comuniquen de forma segura como si estuvieran conectados a un mismo router físico.
 Para el desarrollo de este trabajo práctico, implementamos ZeroTier con el fin de establecer una conexión remota eficiente entre nuestras laptops y una PC de escritorio que actúa como servidor principal. El esquema se estructura de la siguiente manera:
