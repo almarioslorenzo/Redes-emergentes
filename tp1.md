@@ -311,6 +311,52 @@ VLANs "Vivas": Las interfaces vlan10, vlan20 y vlan30 tienen la R (Running). Est
 Ruteo funcionando correctamente: 
 <img width="956" height="656" alt="image" src="https://github.com/user-attachments/assets/194b3df1-8a9b-4d08-ab36-49fec00e091c" />
 
+verifica que el router esta detectando señal en el puente
+<img width="810" height="116" alt="image" src="https://github.com/user-attachments/assets/a0ecdfd6-f87f-4893-ba66-f76df017c8ef" />
+
+<img width="798" height="570" alt="image" src="https://github.com/user-attachments/assets/82686d0f-e3bf-4200-a819-fabfba1de542" />
+
+PC1: <img width="526" height="348" alt="image" src="https://github.com/user-attachments/assets/1be3a7fa-d2a9-4349-b9ec-2fcfa4533c3e" />
+PC1 a router parana
+<img width="844" height="216" alt="image" src="https://github.com/user-attachments/assets/d66083de-d429-4740-9cf1-67236bd6ff9f" />
+
+Pc1 a pc Santa Fe
+<img width="894" height="210" alt="image" src="https://github.com/user-attachments/assets/5f05220f-9da6-4294-be23-7408c2355f4e" />
+
+Salto 1: Router Paraná (.11.1).
+
+Salto 2: Router Central (.1.1).
+
+Salto 3: Router Santa Fe (.2.2).
+
+Salto 4: ¡La PC de destino respondió! (.110.250):
+<img width="1144" height="204" alt="image" src="https://github.com/user-attachments/assets/ab4eab35-d794-4a8d-ab8b-df32048edfdf" />
+
+pc2:
+<img width="498" height="344" alt="image" src="https://github.com/user-attachments/assets/4fd81c67-2870-40f6-950a-6a5f1ba163c3" />
+pc2 a Santa Fe;
+<img width="878" height="218" alt="image" src="https://github.com/user-attachments/assets/438cf13d-3467-43e6-9a0a-2451a052f2b1" />
+
+Pc2 a pc de parana:
+<img width="890" height="212" alt="image" src="https://github.com/user-attachments/assets/620f7acb-21a9-44cf-97e1-dc0944162184" />
+
+El camino debería ser:
+
+192.168.110.1 (Tu router en Santa Fe).
+
+10.0.2.1 (El Router Central).
+
+10.0.1.2 (El Router de Paraná).
+
+192.168.11.250 (La PC1 de destino):
+
+<img width="1156" height="214" alt="image" src="https://github.com/user-attachments/assets/453be940-6301-48c9-8ad4-3854170ede31" />
+
+Pc Santa Fe a pc bs as:
+
+<img width="868" height="210" alt="image" src="https://github.com/user-attachments/assets/370ca025-8651-4e4a-952c-494ed065f7dd" />
+
+
 #### CONEXIÓN ZEROTIER
 ZeroTier es una solución de red de confianza cero (Zero Trust) que actúa como un switch virtual basado en software, creando una Red de Área Local Virtual (VLAN) de capa 2 sobre la infraestructura de internet existente. Mediante servidores centrales que coordinan los nodos y el uso de cifrado de extremo a extremo, permite que dispositivos remotos se comuniquen de forma segura como si estuvieran conectados a un mismo router físico.
 Para el desarrollo de este trabajo práctico, implementamos ZeroTier con el fin de establecer una conexión remota eficiente entre nuestras laptops y una PC de escritorio que actúa como servidor principal. El esquema se estructura de la siguiente manera:
