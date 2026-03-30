@@ -308,6 +308,8 @@ La ether2 tiene las banderas RS (Running/Slave), lo que significa que ya está c
 VLANs "Vivas": Las interfaces vlan10, vlan20 y vlan30 tienen la R (Running). Esto es genial; el router ya las activó porque detecta tráfico o link en el bridge:
 <img width="946" height="488" alt="image" src="https://github.com/user-attachments/assets/72467860-db7d-4da2-baa7-5df0d27ca12d" /> 
 
+Ruteo funcionando correctamente: 
+<img width="956" height="656" alt="image" src="https://github.com/user-attachments/assets/194b3df1-8a9b-4d08-ab36-49fec00e091c" />
 
 #### CONEXIÓN ZEROTIER
 ZeroTier es una solución de red de confianza cero (Zero Trust) que actúa como un switch virtual basado en software, creando una Red de Área Local Virtual (VLAN) de capa 2 sobre la infraestructura de internet existente. Mediante servidores centrales que coordinan los nodos y el uso de cifrado de extremo a extremo, permite que dispositivos remotos se comuniquen de forma segura como si estuvieran conectados a un mismo router físico.
@@ -315,6 +317,8 @@ Para el desarrollo de este trabajo práctico, implementamos ZeroTier con el fin 
 Entorno de Simulación: El servidor de escritorio aloja una máquina virtual donde se ejecuta GNS3 (v3.0), plataforma encargada de procesar las topologías y el tráfico de red del proyecto.
 Acceso y Gestión: Mediante un túnel de capa 2 definido por una Network ID y la asignación de IPs virtuales privadas, la interfaz de GNS3 en las laptops se conecta de forma transparente al motor de simulación remoto.
 Esta configuración permite centralizar la alta carga de procesamiento en el hardware del servidor, evitando limitaciones de rendimiento en las laptops y garantizando un entorno de colaboración seguro y de baja latencia para la ejecución del TP. 
+<img width="900" height="260" alt="image" src="https://github.com/user-attachments/assets/45059a3c-eb34-4930-9ec3-86f3cabcbb70" />
+<img width="1330" height="264" alt="image" src="https://github.com/user-attachments/assets/36a1c167-0386-48fe-95e5-c53cfe797eba" />
 
 ### FASE 5: Reflexión y defensa
 #### Reflexión individual
