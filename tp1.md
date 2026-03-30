@@ -267,6 +267,47 @@ Si la PC y el Router se hablaron, el Router debe haber anotado la "matrícula" (
  
 <img width="896" height="180" alt="image" src="https://github.com/user-attachments/assets/aa4dc9a6-1f3e-41ae-b686-4b8ba809834c" />
 
+Santa fe:
+<img width="1114" height="150" alt="image" src="https://github.com/user-attachments/assets/f3b6fd86-9202-475e-b938-aedea0488e24" />
+
+El Mapa de Rutas. 
+DAo 192.168.11.0/24 (y similares): Son las redes de Paraná. Si aparecen con la o, el OSPF está funcionando.
+
+DAo 192.168.140.0/24: Es la red de Buenos Aires.
+
+DAs 0.0.0.0/0: La salida a Internet a través del router central:
+
+<img width="802" height="566" alt="image" src="https://github.com/user-attachments/assets/63a3511b-3d44-4397-8ee4-410f18789f8a" />
+
+Probar el camino desde el Router de Santa Fe.
+"backbone" (la columna vertebral de la red) funciona. Mira lo que nos dice:
+
+Salto 1 (10.0.2.1): Santa Fe sale correctamente hacia el Router Central.
+
+Salto 2 (192.168.11.1): El Router Central sabe exactamente dónde está Paraná y le entrega el paquete.
+
+Latencia (1.4ms): Es bajísima, lo que significa que el ruteo no tiene cuellos de botella:
+
+<img width="1008" height="150" alt="image" src="https://github.com/user-attachments/assets/8c022be6-c1db-414d-b207-b05521799cbe" />
+
+Verificación del Direccionamiento (IPs)
+Cada VLAN debe tener su propia puerta de enlace (Gateway):
+
+<img width="838" height="198" alt="image" src="https://github.com/user-attachments/assets/fcc58fe0-65e1-4326-80bf-29504d5744c3" />
+
+Santa Fe y el router central conectados correctamente:
+<img width="1130" height="150" alt="image" src="https://github.com/user-attachments/assets/bbae9aa4-49ad-420e-b290-4ced1ae6e98b" />
+
+Parana y el router central conectados:
+
+<img width="1110" height="148" alt="image" src="https://github.com/user-attachments/assets/52a6861e-71ca-411f-abdb-f48e4a5250d7" />
+
+La ether2 tiene las banderas RS (Running/Slave), lo que significa que ya está conectada al switch de Buenos Aires y es parte del bridge.
+
+
+VLANs "Vivas": Las interfaces vlan10, vlan20 y vlan30 tienen la R (Running). Esto es genial; el router ya las activó porque detecta tráfico o link en el bridge:
+<img width="946" height="488" alt="image" src="https://github.com/user-attachments/assets/72467860-db7d-4da2-baa7-5df0d27ca12d" /> 
+
 
 #### CONEXIÓN ZEROTIER
 ZeroTier es una solución de red de confianza cero (Zero Trust) que actúa como un switch virtual basado en software, creando una Red de Área Local Virtual (VLAN) de capa 2 sobre la infraestructura de internet existente. Mediante servidores centrales que coordinan los nodos y el uso de cifrado de extremo a extremo, permite que dispositivos remotos se comuniquen de forma segura como si estuvieran conectados a un mismo router físico.
