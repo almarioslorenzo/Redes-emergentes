@@ -255,6 +255,16 @@ Para que el internet y las VLANs lleguen al switch, la conexión física debe es
 La PC logra hablar con el switch y llegar al router. El cable físico virtual funciona y el switch está dejando pasar los paquetes:
 <img width="608" height="82" alt="image" src="https://github.com/user-attachments/assets/3d6cd9a0-a336-499a-9a89-5bc9cae00a86" />
 
+El MikroTik detecta actividad en el cable que va al switch. La ether2 tiene las banderas RS.
+R (Running):  Hay un cable conectado al switch y está detectando señal.
+S (Slave): Significa que la interfaz está correctamente esclavizada al Bridge. El tráfico puede fluir.
+<img width="1002" height="658" alt="image" src="https://github.com/user-attachments/assets/a2145150-47f4-414e-898e-a91938aee62d" />
+
+Todas las VLANs (desde la 11 a la 33) tienen la R (Running).
+Significa que el router considera que esas redes están "vivas" porque detecta actividad en el Bridge. Si el switch no estuviera conectado o el bridge estuviera apagado, estas líneas no tendrían la R.
+
+Si la PC y el Router se hablaron, el Router debe haber anotado la "matrícula" (MAC Address) de la PC. P 192.168.11.x y la interfaz vlan11-p1-emp
+<img width="896" height="180" alt="image" src="https://github.com/user-attachments/assets/aa4dc9a6-1f3e-41ae-b686-4b8ba809834c" />
 
 
 #### CONEXIÓN ZEROTIER
