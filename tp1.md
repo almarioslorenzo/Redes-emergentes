@@ -264,6 +264,7 @@ Todas las VLANs (desde la 11 a la 33) tienen la R (Running).
 Significa que el router considera que esas redes están "vivas" porque detecta actividad en el Bridge. Si el switch no estuviera conectado o el bridge estuviera apagado, estas líneas no tendrían la R.
 
 Si la PC y el Router se hablaron, el Router debe haber anotado la "matrícula" (MAC Address) de la PC. P 192.168.11.x y la interfaz vlan11-p1-emp
+
 <img width="896" height="180" alt="image" src="https://github.com/user-attachments/assets/aa4dc9a6-1f3e-41ae-b686-4b8ba809834c" />
 
 
