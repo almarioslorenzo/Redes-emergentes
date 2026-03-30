@@ -333,8 +333,10 @@ Salto 4: ¡La PC de destino respondió! (.110.250):
 <img width="1144" height="204" alt="image" src="https://github.com/user-attachments/assets/ab4eab35-d794-4a8d-ab8b-df32048edfdf" />
 
 pc2:
+
 <img width="498" height="344" alt="image" src="https://github.com/user-attachments/assets/4fd81c67-2870-40f6-950a-6a5f1ba163c3" />
-pc2 a Santa Fe;
+pc2 a Santa Fe:
+
 <img width="878" height="218" alt="image" src="https://github.com/user-attachments/assets/438cf13d-3467-43e6-9a0a-2451a052f2b1" />
 
 Pc2 a pc de parana:
